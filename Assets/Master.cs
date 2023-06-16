@@ -9,10 +9,10 @@ public class Master : MonoBehaviour
     {
         for (int i=21; i<109; i++)  // note 21 ~ 108
         {
-            GameObject emptyObject = new GameObject($"Key{i}");
-            emptyObject.AddComponent<Key>();
-            emptyObject.GetComponent<Key>().v = -3.5f + i;
-            emptyObject.GetComponent<Key>().key = keyList[i];
+            GameObject keyObject = new GameObject($"Key{i}");
+            keyObject.transform.SetParent(transform);
+            keyObject.AddComponent<Key>();
+            keyObject.GetComponent<Key>().key = i;
         }
     }
 
