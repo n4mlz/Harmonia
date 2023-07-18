@@ -38,11 +38,11 @@ public class Effect1 : MonoBehaviour
             Vector3 spawnPoint = getSpawnPoint();
             GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
         }
-   }
+    }
 
-   private void NoteOff(MidiChannel channel, int note) {
+    private void NoteOff(MidiChannel channel, int note) {
         if (note == key){
             // 処理を記述
         }
-   }
+    }
 }
