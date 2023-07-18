@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.ResourceManagement.AsyncOperations;
+// using System.Threading.Tasks;
 
 public class Effect1 : MonoBehaviour
 {
@@ -11,16 +13,25 @@ public class Effect1 : MonoBehaviour
     private AsyncOperationHandle<GameObject> handle;
 
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
         key = GetComponentInParent<Key>().key;
         handle = Addressables.LoadAssetAsync<GameObject>("Assets/Effect1/Cube.prefab");  // インスタンス化するプレハブ
+        await handle.Task;
+        Vector3 spawnPoint = getSpawnPoint();
+        Instantiate(handle.Result, spawnPoint, Quaternion.identity);
+        Addressables.Release(handle);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    Vector3 getSpawnPoint()
+    {
+        return new Vector3(0, 0, 0);
     }
 
 //     private void NoteOn(MidiChannel channel, int note, float velocity) {
