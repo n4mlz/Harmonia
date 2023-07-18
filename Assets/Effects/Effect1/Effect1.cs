@@ -40,7 +40,7 @@ public class Effect1 : MonoBehaviour
         }
     }
 
-   private void NoteOff(MidiChannel channel, int note) {
+    private void NoteOff(MidiChannel channel, int note) {
         if (note == key){
             // 処理を記述
         }
