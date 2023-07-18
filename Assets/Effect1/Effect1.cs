@@ -31,7 +31,7 @@ public class Effect1 : MonoBehaviour
 
     Vector3 getSpawnPoint()
     {
-        return new Vector3(0, 0, 0);
+        return new Vector3((key-64)*0.3f, 0, 0);
     }
 
 //     private void NoteOn(MidiChannel channel, int note, float velocity) {
