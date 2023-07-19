@@ -10,24 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Packed Assets
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Packed Assets
   m_Data:
     m_SerializedData: []
-  m_GUID: 97a52a3b9c4d7974eaf237068f19eb9e
-  m_SerializeEntries:
-  - m_GUID: ae4cb3b2a886e2e448b1dc364f32e815
-    m_Address: Effect1/Cube.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5dfcb5135fab3f745b7089ef5ed7da83
-    m_Address: Effect3/Cube3.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_GUID: 7eca6f7f17909694584b22cc9a8b0e52
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31038d3a26cc3b140a2196f21637d872, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: a161b15c2f7e5814a831c4b0310d7cfe, type: 2}
-    - {fileID: 11400000, guid: 7823e320c8de4bc47aaf23db8b244c1e, type: 2}
+    - {fileID: 11400000, guid: 2d57d46fcbe4acd409f5c1df8fec6385, type: 2}
+    - {fileID: 11400000, guid: 8eee3b398a7c3a442aa8e09ea70215da, type: 2}
