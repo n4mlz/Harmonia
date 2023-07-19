@@ -28,7 +28,19 @@ public class Effect2 : MonoBehaviour
 
     Vector3 getSpawnPoint()
     {
-        return new Vector3((key-64)*0.3f, 0, 0);
+        int sp_x;
+        Dictionary<int, int> d = new Dictionary<int, int>()
+            {{0, 0}, {1, 0}, {2, 1}, {3, 1}, {4, 2}, {5, 3}, {6, 3}, {7, 4}, {8, 4}, {9, 5}, {10, 5}, {11, 6}};
+        List<int> black_keys = new List<int> {1, 3, 6, 8, 10};
+        int q, r;
+        q = Math.DivRem(key, 12, out r);
+        if (black_keys.Contains(r)){
+            sp_x = (q * 7 + d[r] - 37) * 2;
+        } else
+        {
+            sp_x =  (q * 7 + d[r] - 37) * 2 - 1;
+        }
+        return return new Vector3(sp_x*0.3f, 0, 0);        
     }
 
 
