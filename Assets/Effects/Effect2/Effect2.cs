@@ -10,20 +10,40 @@ using MidiJack;
 public class Effect2 : MonoBehaviour
 {
     int key;
+    public float speed;
     private AsyncOperationHandle<GameObject> handle;
 
     // Start is called before the first frame update
     async void Start()
     {
         key = GetComponentInParent<Key>().key;
+        speed = 5f;  // ここでスピードを変更
         handle = Addressables.LoadAssetAsync<GameObject>("Effect2/Cube2.prefab");  // インスタンス化するプレハブ
         await handle.Task;
+
+        // ----- memo ----- //
+
+        if (key==64) StartCoroutine(tmp());
+
+        // ----- memo ----- //
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator tmp(){   // memo
+        Vector3 spawnPoint = getSpawnPoint();
+        GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
+        instance.transform.SetParent(transform);
+        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < transform.childCount; i++)
+        {
+        GameObject Child = transform.GetChild(i).gameObject;
+        Child.GetComponent<Cube2>().off();
+        }
     }
 
     Vector3 getSpawnPoint()
@@ -40,21 +60,35 @@ public class Effect2 : MonoBehaviour
         {
             sp_x =  (q * 7 + d[r] - 37) * 2 - 1;
         }
-        return return new Vector3(sp_x*0.3f, 0, 0);        
+        return new Vector3(sp_x*0.3f, 0, 0);        
     }
 
+    void OnEnable() {
+        MidiMaster.noteOnDelegate += NoteOn;
+        MidiMaster.noteOffDelegate += NoteOff;
+    }
+
+    void OnDisable() {
+        MidiMaster.noteOnDelegate -= NoteOn;
+        MidiMaster.noteOffDelegate -= NoteOff;
+    }
 
     private void NoteOn(MidiChannel channel, int note, float velocity) {
         if (note == key){
             // 処理を記述
             Vector3 spawnPoint = getSpawnPoint();
             GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
+            instance.transform.SetParent(transform);
         }
     }
 
     private void NoteOff(MidiChannel channel, int note) {
         if (note == key){
-            // 処理を記述
+            for (int i = 0; i < transform.childCount; i++)  // 一番最後のオブジェクトのみでよいが念のため
+            {
+                GameObject Child = transform.GetChild(i).gameObject;
+                Child.GetComponent<Cube2>().off();
+            }
         }
     }
 }
