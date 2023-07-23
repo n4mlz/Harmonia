@@ -8,13 +8,11 @@ public class Master : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i=21; i<109; i++)  // note 21 ~ 108
-        {
-            GameObject keyObject = new GameObject($"Key{i}");
-            keyObject.transform.SetParent(transform);
-            keyObject.AddComponent<Key>();
-            keyObject.GetComponent<Key>().key = i;
-        }
+
+        GameObject effectObject = new GameObject($"effect");
+        effectObject.transform.SetParent(transform);
+        effectObject.AddComponent<Effect1>();  // ここでエフェクトを指定
+        
     }
 
     // Update is called once per frame
