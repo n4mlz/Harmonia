@@ -40,7 +40,7 @@ public class Key2 : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
         GameObject Child = transform.GetChild(i).gameObject;
-        Child.GetComponent<Cube2>().off();
+        Child.GetComponent<Cube2>().Off();
         }
     }
 
@@ -61,16 +61,16 @@ public class Key2 : MonoBehaviour
         return new Vector3(sp_x*0.3f, 0, 0);
     }
 
-    void On(MidiChannel channel, float velocity) {
+    public void On(MidiChannel channel, float velocity) {
         GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
     }
 
-    void Off(MidiChannel channel, int note) {
+    public void Off(MidiChannel channel) {
         for (int i = 0; i < transform.childCount; i++)  // 一番最後のオブジェクトのみでよいが念のため
             {
                 GameObject Child = transform.GetChild(i).gameObject;
-                Child.GetComponent<Cube2>().off();
+                Child.GetComponent<Cube2>().Off();
             }
     }
 }

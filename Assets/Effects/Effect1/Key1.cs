@@ -31,12 +31,12 @@ public class Key1 : MonoBehaviour
         return new Vector3((key-64)*0.3f, 0, 0);
     }
 
-    void On(MidiChannel channel, float velocity) {
+    public void On(MidiChannel channel, float velocity) {
         GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
     }
 
-    void Off(MidiChannel channel, int note) {
+    public void Off(MidiChannel channel) {
         // 処理を記述
     }
 }

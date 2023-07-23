@@ -28,7 +28,7 @@ public class Cube2 : MonoBehaviour
         }
     }
 
-    public void off(){
+    public void Off(){
         on = false;
     }
 }
