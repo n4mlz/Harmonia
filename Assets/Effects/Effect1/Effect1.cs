@@ -1,34 +1,27 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.EventSystems;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using MidiJack;
 
 public class Effect1 : MonoBehaviour
 {
-    int key;
-    private AsyncOperationHandle<GameObject> handle;
 
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
-        key = GetComponentInParent<Key>().key;
-        handle = Addressables.LoadAssetAsync<GameObject>("Effect1/Cube1.prefab");  // インスタンス化するプレハブ
-        await handle.Task;
+        for (int i=21; i<109; i++)  // note 21 ~ 108
+        {
+            GameObject keyObject = new GameObject($"Key{i}");
+            keyObject.transform.SetParent(transform);
+            keyObject.AddComponent<Key1>();
+            keyObject.GetComponent<Key1>().key = i;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    Vector3 getSpawnPoint()
-    {
-        return new Vector3((key-64)*0.3f, 0, 0);
     }
 
     void OnEnable() {
@@ -42,16 +35,12 @@ public class Effect1 : MonoBehaviour
     }
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
-        if (note == key){
-            // 処理を記述
-            Vector3 spawnPoint = getSpawnPoint();
-            GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
-        }
+        GameObject child = transform.Find($"Key{note}").gameObject;
+        child.GetComponent<Key1>().On(channel, velocity);
     }
 
     void NoteOff(MidiChannel channel, int note) {
-        if (note == key){
-            // 処理を記述
-        }
+        GameObject child = transform.Find($"Key{note}").gameObject;
+        child.GetComponent<Key1>().Off(channel);
     }
 }

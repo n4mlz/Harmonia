@@ -10,7 +10,7 @@ public class Cube2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = GetComponentInParent<Effect2>().speed;
+        speed = GetComponentInParent<Key2>().speed;
         on = true;
     }
 
@@ -28,7 +28,7 @@ public class Cube2 : MonoBehaviour
         }
     }
 
-    public void off(){
+    public void Off(){
         on = false;
     }
 }
