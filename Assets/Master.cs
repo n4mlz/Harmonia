@@ -11,7 +11,7 @@ public class Master : MonoBehaviour
 
         GameObject effectObject = new GameObject($"effect");
         effectObject.transform.SetParent(transform);
-        effectObject.AddComponent<Effect1>();  // ここでエフェクトを指定
+        effectObject.AddComponent<Effect2>();  // ここでエフェクトを指定
         
     }
 

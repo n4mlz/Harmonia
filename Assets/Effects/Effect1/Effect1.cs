@@ -35,16 +35,10 @@ public class Effect1 : MonoBehaviour
     }
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
-        // if (note == key){
-        //     // 処理を記述
-        //     Vector3 spawnPoint = getSpawnPoint();
-        //     GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
-        // }
+        // それぞれのnoteに対応するKeyのOn()を呼び出す
     }
 
     void NoteOff(MidiChannel channel, int note) {
-        // if (note == key){
-        //     // 処理を記述
-        // }
+        // それぞれのnoteに対応するKeyのOff()を呼び出す
     }
 }

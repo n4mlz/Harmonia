@@ -18,9 +18,6 @@ public class Key1 : MonoBehaviour
         handle = Addressables.LoadAssetAsync<GameObject>("Effect1/Cube1.prefab");  // インスタンス化するプレハブ
         await handle.Task;
 
-        GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
-        instance.transform.SetParent(transform);
-
     }
 
     // Update is called once per frame
@@ -35,7 +32,7 @@ public class Key1 : MonoBehaviour
     }
 
     void On(MidiChannel channel, float velocity) {
-        GameObject instance = Instantiate(handle.Result, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
     }
 
