@@ -1,23 +1,21 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.EventSystems;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using MidiJack;
 
 public class Effect2 : MonoBehaviour
 {
-    int key;
-    private AsyncOperationHandle<GameObject> handle;
 
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
-        key = GetComponentInParent<Key>().key;
-        handle = Addressables.LoadAssetAsync<GameObject>("Effect2/Cube2.prefab");  // インスタンス化するプレハブ
-        await handle.Task;
+        for (int i=21; i<109; i++)  // note 21 ~ 108
+        {
+            GameObject keyObject = new GameObject($"Key{i}");
+            keyObject.transform.SetParent(transform);
+            keyObject.AddComponent<Key2>();
+            keyObject.GetComponent<Key2>().key = i;
+        }
     }
 
     // Update is called once per frame
@@ -26,23 +24,23 @@ public class Effect2 : MonoBehaviour
         
     }
 
-    Vector3 getSpawnPoint()
-    {
-        return new Vector3((key-64)*0.3f, 0, 0);
+    void OnEnable() {
+        MidiMaster.noteOnDelegate += NoteOn;
+        MidiMaster.noteOffDelegate += NoteOff;
     }
 
-
-    private void NoteOn(MidiChannel channel, int note, float velocity) {
-        if (note == key){
-            // 処理を記述
-            Vector3 spawnPoint = getSpawnPoint();
-            GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
-        }
+    void OnDisable() {
+        MidiMaster.noteOnDelegate -= NoteOn;
+        MidiMaster.noteOffDelegate -= NoteOff;
     }
 
-    private void NoteOff(MidiChannel channel, int note) {
-        if (note == key){
-            // 処理を記述
-        }
+    void NoteOn(MidiChannel channel, int note, float velocity) {
+        GameObject child = transform.Find($"Key{note}").gameObject;
+        child.GetComponent<Key2>().On(velocity);
+    }
+
+    void NoteOff(MidiChannel channel, int note) {
+        GameObject child = transform.Find($"Key{note}").gameObject;
+        child.GetComponent<Key2>().Off();
     }
 }
