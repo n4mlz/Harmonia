@@ -16,6 +16,9 @@ public class Effect2 : MonoBehaviour
             keyObject.AddComponent<Key2>();
             keyObject.GetComponent<Key2>().key = i;
         }
+        GameObject key2keyObject = new GameObject($"Key2key");
+        key2keyObject.transform.SetParent(transform);
+        key2keyObject.AddComponent<Key2key>();
     }
 
     // Update is called once per frame
