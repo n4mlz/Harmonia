@@ -16,6 +16,7 @@ public class Key2 : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
+        transform.position = getSpawnPoint();
         speed = 5f;  // ここでスピードを変更
         handle = Addressables.LoadAssetAsync<GameObject>("Effect2/Cube2.prefab");  // インスタンス化するプレハブ
         await handle.Task;
@@ -61,12 +62,12 @@ public class Key2 : MonoBehaviour
         return new Vector3(sp_x*0.3f, 0, 0);
     }
 
-    public void On(MidiChannel channel, float velocity) {
+    public void On(float velocity) {
         GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
     }
 
-    public void Off(MidiChannel channel) {
+    public void Off() {
         for (int i = 0; i < transform.childCount; i++)  // 一番最後のオブジェクトのみでよいが念のため
             {
                 GameObject Child = transform.GetChild(i).gameObject;

@@ -36,11 +36,11 @@ public class Effect2 : MonoBehaviour
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key2>().On(channel, velocity);
+        child.GetComponent<Key2>().On(velocity);
     }
 
     void NoteOff(MidiChannel channel, int note) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key2>().Off(channel);
+        child.GetComponent<Key2>().Off();
     }
 }
