@@ -10,6 +10,10 @@ public class Cube2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Vector3 localScale = transform.localScale;
+        localScale.x = 0.5f;
+        localScale.z = 0.5f;
+        transform.localScale = localScale;
         speed = GetComponentInParent<Key2>().speed;
         on = true;
     }
@@ -26,6 +30,7 @@ public class Cube2 : MonoBehaviour
         } else {
             transform.Translate(0f, speed * Time.deltaTime, 0f);
         }
+        if (transform.position.y - transform.localScale.y/2 > 15) Destroy(this.gameObject);
     }
 
     public void Off(){
