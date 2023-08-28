@@ -12,6 +12,8 @@ public class Key2 : MonoBehaviour
     public int key;
     public float speed;
     private AsyncOperationHandle<GameObject> handle;
+    private AsyncOperationHandle<GameObject> handle_effect;
+    private GameObject instance_effect;
 
     // Start is called before the first frame update
     async void Start()
@@ -19,7 +21,9 @@ public class Key2 : MonoBehaviour
         transform.position = getSpawnPoint();
         speed = 5f;  // ここでスピードを変更
         handle = Addressables.LoadAssetAsync<GameObject>("Effect2/Cube2.prefab");  // インスタンス化するプレハブ
+        handle_effect = Addressables.LoadAssetAsync<GameObject>("Assets/Hovl Studio/Procedural fire/Prefabs/Magic fire pro blue.prefab");  // インスタンス化するプレハブ
         await handle.Task;
+        await handle_effect.Task;
 
         // ----- memo ----- //
 
@@ -36,12 +40,19 @@ public class Key2 : MonoBehaviour
 
     IEnumerator tmp(){   // memo
         GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
+        instance_effect = Instantiate(handle_effect.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
+        instance_effect.transform.SetParent(transform);
+        instance_effect.transform.localScale = new Vector3(4, 4, 4);
+        Vector3 position = instance_effect.transform.position;
+        position.z = -1;
+        instance_effect.transform.position = position;
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < transform.childCount; i++)
         {
         GameObject Child = transform.GetChild(i).gameObject;
         Child.GetComponent<Cube2>().Off();
+        Destroy(instance_effect);
         }
     }
 
@@ -64,7 +75,13 @@ public class Key2 : MonoBehaviour
 
     public void On(float velocity) {
         GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
+        instance_effect = Instantiate(handle_effect.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
+        instance_effect.transform.SetParent(transform);
+        instance_effect.transform.localScale = new Vector3(4, 4, 4);
+        Vector3 position = instance_effect.transform.position;
+        position.z = -1;
+        instance_effect.transform.position = position;
     }
 
     public void Off() {
@@ -72,6 +89,7 @@ public class Key2 : MonoBehaviour
             {
                 GameObject Child = transform.GetChild(i).gameObject;
                 Child.GetComponent<Cube2>().Off();
+                Destroy(instance_effect);
             }
     }
 }
