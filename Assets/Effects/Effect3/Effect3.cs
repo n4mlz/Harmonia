@@ -1,41 +1,28 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.EventSystems;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using MidiJack;
 
 public class Effect3 : MonoBehaviour
 {
-    int key;
-    private AsyncOperationHandle<GameObject> handle;
 
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
-        key = GetComponentInParent<Key>().key;
-        handle = Addressables.LoadAssetAsync<GameObject>("Effect3/Cube3.prefab");  // インスタンス化するプレハブ
-        await handle.Task;
-
-        // if(key == 50) {
-        //     Vector3 spawnPoint = getSpawnPoint();
-        //     GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
-        // }
+        for (int i=21; i<109; i++)  // note 21 ~ 108
+        {
+            GameObject keyObject = new GameObject($"Key{i}");
+            keyObject.transform.SetParent(transform);
+            keyObject.AddComponent<Key1>();
+            keyObject.GetComponent<Key1>().key = i;
+        }
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-    Vector3 getSpawnPoint()
-    {
-        return new Vector3((key-64)*0.1f, -4, 0);
-    }
-
 
     void OnEnable() {
         MidiMaster.noteOnDelegate += NoteOn;
@@ -48,17 +35,12 @@ public class Effect3 : MonoBehaviour
     }
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
-        if(note == key)
-        {
-            Vector3 spawnPoint = getSpawnPoint();
-            GameObject instance = Instantiate(handle.Result, spawnPoint, Quaternion.identity);
-        }
+        GameObject child = transform.Find($"Key{note}").gameObject;
+        child.GetComponent<Key1>().On(channel, velocity);
     }
 
     void NoteOff(MidiChannel channel, int note) {
-        if(note == key)
-        {
-
-        }
+        GameObject child = transform.Find($"Key{note}").gameObject;
+        child.GetComponent<Key1>().Off(channel);
     }
 }
