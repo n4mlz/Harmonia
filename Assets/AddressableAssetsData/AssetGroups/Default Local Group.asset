@@ -21,8 +21,8 @@ MonoBehaviour:
     m_Address: Effect1/Cube1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 5dfcb5135fab3f745b7089ef5ed7da83
-    m_Address: Effect3/Cube3.prefab
+  - m_GUID: 201efc957d888954893c56ca4dfd5a32
+    m_Address: Effect2/Cube2.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
