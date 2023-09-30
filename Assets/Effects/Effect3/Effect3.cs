@@ -13,8 +13,8 @@ public class Effect3 : MonoBehaviour
         {
             GameObject keyObject = new GameObject($"Key{i}");
             keyObject.transform.SetParent(transform);
-            keyObject.AddComponent<Key1>();
-            keyObject.GetComponent<Key1>().key = i;
+            keyObject.AddComponent<Key3>();
+            keyObject.GetComponent<Key3>().key = i;
         }
     }
 
@@ -36,11 +36,11 @@ public class Effect3 : MonoBehaviour
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key1>().On(channel, velocity);
+        child.GetComponent<Key3>().On(channel, velocity);
     }
 
     void NoteOff(MidiChannel channel, int note) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key1>().Off(channel);
+        child.GetComponent<Key3>().Off(channel);
     }
 }
