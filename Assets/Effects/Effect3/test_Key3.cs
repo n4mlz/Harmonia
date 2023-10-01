@@ -18,7 +18,7 @@ public class test_Key3 : MonoBehaviour
     {
         transform.position = getSpawnPoint();
         // handle = Addressables.LoadAssetAsync<GameObject>("Effect3/Cube3.prefab");  // インスタンス化するプレハブ
-        handle = Addressables.LoadAssetAsync<GameObject>("Effect3/Particle.prefab");  // インスタンス化するプレハブ
+        handle = Addressables.LoadAssetAsync<GameObject>("Effect3/BlueFire.prefab");  // インスタンス化するプレハブ
         await handle.Task;
 
         particles[key] = Instantiate(handle.Result, transform.position, Quaternion.identity);
