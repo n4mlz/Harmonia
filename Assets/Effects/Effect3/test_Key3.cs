@@ -9,7 +9,7 @@ using MidiJack;
 public class test_Key3 : MonoBehaviour
 {
     public int key;
-    private AsyncOperationHandle<GameObject> handle;
+    private AsyncOperationHandle<GameObject> handle, cubeHandle;
 
     private GameObject[] particles = new GameObject[150];
     
@@ -19,7 +19,9 @@ public class test_Key3 : MonoBehaviour
         transform.position = getSpawnPoint();
         // handle = Addressables.LoadAssetAsync<GameObject>("Effect3/Cube3.prefab");  // インスタンス化するプレハブ
         handle = Addressables.LoadAssetAsync<GameObject>("Effect3/BlueFire.prefab");  // インスタンス化するプレハブ
+        cubeHandle = Addressables.LoadAssetAsync<GameObject>("Effect3/Cube3.prefab");  // インスタンス化するプレハブ
         await handle.Task;
+        await cubeHandle.Task;
 
         particles[key] = Instantiate(handle.Result, transform.position, Quaternion.identity);
         particles[key].transform.SetParent(transform);
