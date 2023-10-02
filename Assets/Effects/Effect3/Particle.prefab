@@ -118,10 +118,14 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       scalar: 1
 =======
       scalar: 1.3
 >>>>>>> c4c7e14b85e1de33cdc874432d7f28969ad458bb
+=======
+      scalar: 1.3
+>>>>>>> 2979141dafc5a0545855022fdbe86bb581a44832
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -607,10 +611,14 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     maxNumParticles: 1000
 =======
     maxNumParticles: 100000
 >>>>>>> c4c7e14b85e1de33cdc874432d7f28969ad458bb
+=======
+    maxNumParticles: 100000
+>>>>>>> 2979141dafc5a0545855022fdbe86bb581a44832
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -679,10 +687,14 @@ ParticleSystem:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Scale: {x: 0.01, y: 0.01, z: 0.01}
 =======
     m_Scale: {x: 0.1, y: 0.1, z: 0.1}
 >>>>>>> c4c7e14b85e1de33cdc874432d7f28969ad458bb
+=======
+    m_Scale: {x: 0.1, y: 0.1, z: 0.1}
+>>>>>>> 2979141dafc5a0545855022fdbe86bb581a44832
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -763,10 +775,14 @@ ParticleSystem:
     radius:
       value: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
       mode: 0
 =======
       mode: 1
 >>>>>>> c4c7e14b85e1de33cdc874432d7f28969ad458bb
+=======
+      mode: 1
+>>>>>>> 2979141dafc5a0545855022fdbe86bb581a44832
       spread: 0
       speed:
         serializedVersion: 2
@@ -885,10 +901,14 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       scalar: 10
 =======
       scalar: 500
 >>>>>>> c4c7e14b85e1de33cdc874432d7f28969ad458bb
+=======
+      scalar: 500
+>>>>>>> 2979141dafc5a0545855022fdbe86bb581a44832
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4841,10 +4861,14 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6211266640601206698}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Enabled: 1
 =======
   m_Enabled: 0
 >>>>>>> c4c7e14b85e1de33cdc874432d7f28969ad458bb
+=======
+  m_Enabled: 0
+>>>>>>> 2979141dafc5a0545855022fdbe86bb581a44832
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f01ed3780c433ff439de4e2530227336, type: 3}
   m_Name: 

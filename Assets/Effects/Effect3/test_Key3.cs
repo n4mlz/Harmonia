@@ -61,7 +61,9 @@ public class test_Key3 : MonoBehaviour
         // }
         particles[note].GetComponent<Particle>().off();
 
+
         instance.GetComponent<Cube3>().off();
         instance = null;
+
     }
 }
