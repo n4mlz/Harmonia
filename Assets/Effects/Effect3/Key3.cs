@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,7 +52,7 @@ public class Key3 : MonoBehaviour
     }
 
     private GameObject instance = null;
-    public void On(MidiChannel channel, float velocity) {
+    public void On(float velocity) {
         particle.GetComponent<Particle>().on();
 
         instance = Instantiate(cubeHandle.Result, transform.position, Quaternion.identity);
@@ -59,7 +60,7 @@ public class Key3 : MonoBehaviour
         instance.GetComponent<Cube3>().on();
     }
 
-    public void Off(MidiChannel channel) {
+    public void Off() {
         // 処理を記述
         particle.GetComponent<Particle>().off();
 

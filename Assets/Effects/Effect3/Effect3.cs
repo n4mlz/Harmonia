@@ -18,6 +18,10 @@ public class Effect3 : MonoBehaviour
         }
         gameObject.AddComponent<ParticleLine>();
         gameObject.GetComponent<ParticleLine>().on();
+
+        GameObject key2keyObject = new GameObject($"Key2key");
+        key2keyObject.transform.SetParent(transform);
+        key2keyObject.AddComponent<Key2key3>();
     }
 
     // Update is called once per frame
@@ -38,11 +42,11 @@ public class Effect3 : MonoBehaviour
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key3>().On(channel, velocity);
+        child.GetComponent<Key3>().On(velocity);
     }
 
     void NoteOff(MidiChannel channel, int note) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key3>().Off(channel);
+        child.GetComponent<Key3>().Off();
     }
 }
