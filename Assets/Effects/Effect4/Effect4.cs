@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MidiJack;
 
-public class Effect3 : MonoBehaviour
+public class Effect4 : MonoBehaviour
 {
 
     // Start is called before the first frame update
@@ -13,15 +13,12 @@ public class Effect3 : MonoBehaviour
         {
             GameObject keyObject = new GameObject($"Key{i}");
             keyObject.transform.SetParent(transform);
-            keyObject.AddComponent<Key3>();
-            keyObject.GetComponent<Key3>().key = i;
+            keyObject.AddComponent<Key4>();
+            keyObject.GetComponent<Key4>().key = i;
         }
-        gameObject.AddComponent<ParticleLine>();
-        gameObject.GetComponent<ParticleLine>().on();
-
-        GameObject key2keyObject = new GameObject($"Key2key");
+        GameObject key2keyObject = new GameObject($"Key2key4");
         key2keyObject.transform.SetParent(transform);
-        key2keyObject.AddComponent<Key2key3>();
+        key2keyObject.AddComponent<Key2key4>();
     }
 
     // Update is called once per frame
@@ -42,11 +39,11 @@ public class Effect3 : MonoBehaviour
 
     void NoteOn(MidiChannel channel, int note, float velocity) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key3>().On(velocity);
+        child.GetComponent<Key4>().On(velocity);
     }
 
     void NoteOff(MidiChannel channel, int note) {
         GameObject child = transform.Find($"Key{note}").gameObject;
-        child.GetComponent<Key3>().Off();
+        child.GetComponent<Key4>().Off();
     }
 }

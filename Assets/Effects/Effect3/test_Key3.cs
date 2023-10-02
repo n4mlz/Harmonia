@@ -50,9 +50,11 @@ public class test_Key3 : MonoBehaviour
         // particles[note] = instance;
         particles[note].GetComponent<Particle>().on();
 
+
         instance = Instantiate(cubeHandle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
         instance.GetComponent<Cube3>().on();
+
     }
 
     public void Off(int note) {
@@ -61,7 +63,9 @@ public class test_Key3 : MonoBehaviour
         // }
         particles[note].GetComponent<Particle>().off();
 
+
         instance.GetComponent<Cube3>().off();
         instance = null;
+
     }
 }
