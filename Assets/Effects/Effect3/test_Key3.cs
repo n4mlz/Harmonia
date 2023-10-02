@@ -9,7 +9,7 @@ using MidiJack;
 public class test_Key3 : MonoBehaviour
 {
     public int key;
-    private AsyncOperationHandle<GameObject> handle;
+    private AsyncOperationHandle<GameObject> handle, cubeHandle;
 
     private GameObject[] particles = new GameObject[150];
     
@@ -18,8 +18,10 @@ public class test_Key3 : MonoBehaviour
     {
         transform.position = getSpawnPoint();
         // handle = Addressables.LoadAssetAsync<GameObject>("Effect3/Cube3.prefab");  // インスタンス化するプレハブ
-        handle = Addressables.LoadAssetAsync<GameObject>("Effect3/Particle.prefab");  // インスタンス化するプレハブ
+        handle = Addressables.LoadAssetAsync<GameObject>("Effect3/BlueFire.prefab");  // インスタンス化するプレハブ
+        cubeHandle = Addressables.LoadAssetAsync<GameObject>("Effect3/Cube3.prefab");  // インスタンス化するプレハブ
         await handle.Task;
+        await cubeHandle.Task;
 
         particles[key] = Instantiate(handle.Result, transform.position, Quaternion.identity);
         particles[key].transform.SetParent(transform);
@@ -37,6 +39,8 @@ public class test_Key3 : MonoBehaviour
         return new Vector3((key-64)*0.3f, -4, 0);
     }
 
+    private GameObject instance = null;
+
     public void On(int note, float velocity) {
         // if(particles[note] != null) {
         //     Debug.Log($"key {note} is not null");
@@ -45,6 +49,10 @@ public class test_Key3 : MonoBehaviour
         // instance.transform.SetParent(transform);
         // particles[note] = instance;
         particles[note].GetComponent<Particle>().on();
+
+        instance = Instantiate(cubeHandle.Result, transform.position, Quaternion.identity);
+        instance.transform.SetParent(transform);
+        instance.GetComponent<Cube3>().on();
     }
 
     public void Off(int note) {
@@ -52,5 +60,8 @@ public class test_Key3 : MonoBehaviour
         //     Debug.Log($"key {note} is null");
         // }
         particles[note].GetComponent<Particle>().off();
+
+        instance.GetComponent<Cube3>().off();
+        instance = null;
     }
 }
