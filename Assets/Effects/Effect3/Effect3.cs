@@ -16,6 +16,8 @@ public class Effect3 : MonoBehaviour
             keyObject.AddComponent<Key3>();
             keyObject.GetComponent<Key3>().key = i;
         }
+        gameObject.AddComponent<ParticleLine>();
+        gameObject.GetComponent<ParticleLine>().on();
     }
 
     // Update is called once per frame
