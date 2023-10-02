@@ -33,6 +33,14 @@ MonoBehaviour:
     m_Address: Effect3/Particle.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 283f3bdb6a9a92f4c836a1f8c1b6c233
+    m_Address: Effect3/BlueFire.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c8b57a0a458695e40ad8684b4e1eac16
+    m_Address: Effect3/ParticleLine.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31038d3a26cc3b140a2196f21637d872, type: 2}
   m_SchemaSet:
