@@ -50,8 +50,6 @@ public class Key4 : MonoBehaviour
     public void On(float velocity) {
         GameObject instance = Instantiate(handle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
-        Vector3 position = instance_effect.transform.position;
-        position.z = -1;
     }
 
     public void Off() {
