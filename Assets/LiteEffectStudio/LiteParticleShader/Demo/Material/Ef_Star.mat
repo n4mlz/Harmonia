@@ -7,13 +7,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: Ef_Star
   m_Shader: {fileID: 4800000, guid: 68b0c57d2bb6bb446a37a985dfbdd192, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - SOFTPARTICLES_ON
   m_InvalidKeywords:
-  - _EMISSION
-  m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  - Enable_CutUVRotation
+  - Enable_EmissionGain
+  - _ALPHABLEND_ON
+  - _COLORADDSUBDIFF_ON
+  - _REQUIRE_UV2
+  - _SOFTPARTICLESENABLED_ON
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -46,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: af7ac99b17d030a48b9ab6dab0849297, type: 3}
+        m_Texture: {fileID: 2800000, guid: ff77882488c0a08489516ee62954ef6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -61,10 +67,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _BlendOp: 0
@@ -72,45 +74,54 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _Cull: 2
+    - _ColorMode: 1
+    - _Cull: 0
     - _CutRotation: 0
+    - _CutSheetX: 1
+    - _CutSheetY: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0
-    - _DstBlend: 0
+    - _DstBlend: 1
     - _EmissionEnabled: 0
-    - _EmissionGain: 3.58
-    - _FlipbookMode: 0
+    - _EmissionGain: 5
+    - _FlipbookMode: 1
+    - _FresnelPower: 5
+    - _FresnelScale: 0.5
     - _GlossMapScale: 1
-    - _Glossiness: 0.849
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LightingEnabled: 1
-    - _MainRotation: 97
-    - _Metallic: 1
-    - _Mode: 0
+    - _InvFade: 0.06
+    - _Light: 0
+    - _LightingEnabled: 0
+    - _MainRotation: 0
+    - _Metallic: 0
+    - _Mode: 4
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _SheetX: 1
+    - _SheetY: 1
     - _SmoothnessTextureChannel: 0
-    - _SoftParticlesEnabled: 0
-    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesEnabled: 1
+    - _SoftParticlesFarFadeDistance: 0.2
     - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _UVSec: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     - _isCut: 0
-    - _isCutRotation: 0
+    - _isCutRotation: 1
     - _isEmissionGain: 1
     - _isRotation: 1
-    - _light: 1
-    - _lightGain: 1
+    - _light: 0.2
+    - _lightGain: 2
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.18823528, g: 0.58982366, b: 0.9411765, a: 1}
-    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Color: {r: 5.5908804, g: 1.2294083, b: 0, a: 1}
+    - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SoftParticleFadeParams: {r: 0, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
