@@ -9,6 +9,7 @@ public class Particle : MonoBehaviour
     {
         Vector3 pos = gameObject.transform.position;
         pos.y += -0.3f;
+        pos.z += -0.3f;
         gameObject.transform.position = pos;    
     }
 
