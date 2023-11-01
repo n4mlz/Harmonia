@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.EventSystems;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class Cube3 : MonoBehaviour
 {
@@ -8,21 +11,26 @@ public class Cube3 : MonoBehaviour
     public float speed = 0.15f;
     private Material m_material;
 
+    private AsyncOperationHandle<Material> handle;
+
     void OnDestroy()
     {
         GameObject.Destroy(m_material);
     }
 
     // Start is called before the first frame update
-    void Start()
+    async void Start()
     {
         Vector3 pos = gameObject.transform.position;
         pos.y += -0.3f;
         gameObject.transform.position = pos;
 
-        var mat = Resources.Load<Material>("Assets/Effects/Effect3/NewMaterial.mat");
-        m_material = new Material(mat);
-        gameObject.GetComponent<Renderer>().material = m_material;
+        handle = Addressables.LoadAssetAsync<Material>("Effect3/NewMaterial.mat");  // インスタンス化するプレハブ
+        await handle.Task;
+// Effect3/NewMaterial.mat
+        // var mat = Resources.Load<Material>("Assets/Effects/Effect3/NewMaterial.mat");
+        // m_material = new Material(mat);
+        gameObject.GetComponent<Renderer>().material = handle.Result;
     }
 
     // Update is called once per frame
@@ -45,7 +53,7 @@ public class Cube3 : MonoBehaviour
                 Destroy(gameObject);
             }
         
-        Debug.Log(gameObject.GetComponent<Renderer>().material.shader);
+        // Debug.Log(gameObject.GetComponent<Renderer>().material.shader);
         }
     }
 
