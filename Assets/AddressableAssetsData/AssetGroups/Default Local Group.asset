@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: Effect3/ParticleLine.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 443a57f68b9b7c7418384261204c2a46
+    m_Address: Effect3/pushParticle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31038d3a26cc3b140a2196f21637d872, type: 2}
   m_SchemaSet:
