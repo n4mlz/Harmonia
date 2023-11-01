@@ -9,14 +9,10 @@ public class Cube3 : MonoBehaviour
 {
     private int shift = 0;
     public float speed = 0.15f;
-    private Material m_material;
 
     private AsyncOperationHandle<Material> handle;
 
-    void OnDestroy()
-    {
-        GameObject.Destroy(m_material);
-    }
+    private float CurrentRotation = 0.0f;
 
     // Start is called before the first frame update
     async void Start()
@@ -34,8 +30,16 @@ public class Cube3 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    async void Update()
     {
+        // Material sub = gameObject.GetComponent<Renderer>().material;
+        // await sub.Task;
+        // Debug.Log(sub.GetFloat("_isRotation"));
+        gameObject.GetComponent<Renderer>().material.SetFloat("_MainRotation", CurrentRotation);
+        CurrentRotation += 0.01f;
+        CurrentRotation %= 1.0f;
+
+
         if(shift == 0) {
             Vector3 pos = gameObject.transform.position;
             pos.y += speed / 2;
@@ -52,8 +56,6 @@ public class Cube3 : MonoBehaviour
             if(pos.y - sz.y / 2 >= 10.0f) {
                 Destroy(gameObject);
             }
-        
-        // Debug.Log(gameObject.GetComponent<Renderer>().material.shader);
         }
     }
 
