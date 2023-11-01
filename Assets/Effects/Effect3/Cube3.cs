@@ -5,12 +5,12 @@ using UnityEngine;
 public class Cube3 : MonoBehaviour
 {
     private int shift = 0;
-    public float speed = 0.015f;
+    public float speed = 0.15f;
     // Start is called before the first frame update
     void Start()
     {
         Vector3 pos = gameObject.transform.position;
-        pos.y += 0.2f;
+        pos.y += -0.3f;
         gameObject.transform.position = pos;
     }
 
