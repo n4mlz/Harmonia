@@ -34,10 +34,14 @@ public class Cube3 : MonoBehaviour
     {
         // Material sub = gameObject.GetComponent<Renderer>().material;
         // await sub.Task;
-        // Debug.Log(sub.GetFloat("_isRotation"));
-        gameObject.GetComponent<Renderer>().material.SetFloat("_MainRotation", CurrentRotation);
-        CurrentRotation += 0.01f;
-        CurrentRotation %= 1.0f;
+        // Debug.Log(gameObject.GetComponent<Renderer>().material.GetFloat("Custom1.w"));
+        // gameObject.GetComponent<Renderer>().material.SetTextureScale("_MainTex", new Vector2(0.25f,0.25f));
+        // CurrentRotation += 0.1f;
+        // CurrentRotation %= 1.0f;
+        Vector3 rot = gameObject.transform.localEulerAngles;
+        rot.y += 1.5f;
+        gameObject.transform.localEulerAngles = rot;
+
 
 
         if(shift == 0) {
@@ -47,6 +51,7 @@ public class Cube3 : MonoBehaviour
             Vector3 sz = gameObject.transform.localScale;
             sz.y += speed;
             gameObject.transform.localScale = sz;
+            gameObject.GetComponent<Renderer>().material.SetTextureScale("_MainTex", new Vector2(0.25f,sz.y * 0.25f));
         }
         if(shift == 1) {
             Vector3 pos = gameObject.transform.position;
