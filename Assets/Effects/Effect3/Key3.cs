@@ -66,7 +66,6 @@ public class Key3 : MonoBehaviour
     }
 
     private GameObject instance = null;
-    private GameObject pushParticleInstance = null;
     public void On(float velocity) {
         particle.GetComponent<Particle>().on();
         pushParticle.GetComponent<pushParticle>().on();
@@ -75,6 +74,7 @@ public class Key3 : MonoBehaviour
         instance = Instantiate(cubeHandle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
         instance.GetComponent<Cube3>().on();
+        instance.GetComponent<Cube3>().init(key);
     }
 
     public void Off() {
