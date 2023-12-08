@@ -74,6 +74,7 @@ public class Key3 : MonoBehaviour
         instance = Instantiate(cubeHandle.Result, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
         instance.GetComponent<Cube3>().on();
+        instance.GetComponent<Cube3>().init(key);
     }
 
     public void Off() {
