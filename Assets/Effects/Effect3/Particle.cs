@@ -7,7 +7,10 @@ public class Particle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Vector3 pos = gameObject.transform.position;
+        pos.y += -0.3f;
+        pos.z += -0.3f;
+        gameObject.transform.position = pos;    
     }
 
     // Update is called once per frame
